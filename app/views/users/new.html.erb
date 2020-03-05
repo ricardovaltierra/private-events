@@ -1,0 +1,13 @@
+<h1>Users#new</h1>
+
+<div class="container" style="max-width: 700px">
+  <h4 class="text-center mt-5">Sign up<h4>
+    <%= form_for(@user) do |f| %>
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control' %>
+      </div>      
+      <%= f.submit 'Sign up', class: 'btn btn-primary mb-3'  %>
+    <% end %>
+    <!-- <p class="h6">Already have an account? <%= link_to "Login now!", login_path %></p> -->
+</div>
