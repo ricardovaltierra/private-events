@@ -1,7 +1,7 @@
 <h1>Private Events</h1>
 
 <% if session[:user_id] %>
-  <%= link_to 'Log out!', logout_path %>
+  <%= link_to 'Log out!', logout_path, method: :delete %>
 <% else %>
   <%= link_to "Log in!", login_path %>
 <% end %>
