@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    #@event = current_user.created_events.build
   end
 
   def show
