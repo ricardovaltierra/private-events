@@ -1,10 +1,9 @@
 <h1>Events#show</h1>
 <% @events.each do |event| %>
+  <%= link_to event.name, event_path(event.id) %><br>
   <span>Creator:</span>
   <span><%= event.creator.username %></span><br>
-  <span>Event name:</span>
-  <span><%= event.name %></span><br>
-  <span>Creator:</span>
+  <span>Date:</span>
   <span><%= event.date %></span><br>
   <span>Content:</span>
   <span><%= event.content %></span><br>
