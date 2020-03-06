@@ -8,4 +8,16 @@
 <span>Content:</span>
 <span><%= @event.content %></span><br>
 <span>Location:</span>
-<span><%= @event.location %></span><br><br> 
+<span><%= @event.location %></span><br><br>
+
+<%= form_for(@event, url: register_path, method: :post) do |f| %>
+    <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.submit 'Register' %>
+<% end %>
+
+
+
+<h1>Attendees</h1>
+<% @attendees.each do |attendee| %>
+  <span><%= attendee.username %></span>
+<% end %>

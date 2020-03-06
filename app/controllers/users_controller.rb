@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @events = current_user.created_events
+    @events_created = current_user.created_events
+    @events_attended = current_user.attended_events
   end
 
   private
