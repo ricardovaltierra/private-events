@@ -10,14 +10,22 @@
 <span>Location:</span>
 <span><%= @event.location %></span><br><br>
 
-<%= form_for(@event, url: register_path, method: :post) do |f| %>
-    <%= f.hidden_field :event_id, value: @event.id %>
-    <%= f.submit 'Register' %>
+<% unless session[:user_id] == @event.creator_id %>
+  <% if !@registered %>
+    <%= form_for(:registrations, url: attend_path, method: :post) do |f| %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.submit 'Register' %>
+    <% end %>
+  <% else %>
+    <%= form_for(:registrations, url: unattend_path, method: :delete) do |f| %>
+      <%= f.hidden_field :event_id, value: @event.id %>
+      <%= f.submit 'Unattend' %>
+    <% end %>
+  <% end %>
 <% end %>
-
-
 
 <h1>Attendees</h1>
 <% @attendees.each do |attendee| %>
   <span><%= attendee.username %></span>
+  </br>
 <% end %>
