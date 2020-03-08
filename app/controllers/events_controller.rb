@@ -20,16 +20,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @attendees = @event.attendees.all
-  end
-
-  def attend
-    @event = Event.find(params[:event][:event_id])
-    if current_user.attended_events.find_by_id(@event.id)
-      redirect_to event_path(@event)
-    else
-      current_user.attended_events << @event
-      redirect_to event_path(@event)
-    end
+    registered?(current_user) ? @attending = false : @attending = true
   end
 
   private
