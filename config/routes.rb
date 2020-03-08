@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'registrations/create'
-  get 'registrations/delete'
   root 'static_pages#home'
   
   get '/login', to: 'sessions#new'
@@ -9,7 +7,8 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   
-  post '/register', to: 'events#attend'
+  post '/attend', to: 'registrations#create'
+  delete '/unattend', to: 'registrations#destroy'
 
   resources :users, only: [:new, :create, :show]
   resources :events, only: [:new, :create, :show, :index]
