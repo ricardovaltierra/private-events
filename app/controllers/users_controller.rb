@@ -16,8 +16,8 @@ class UsersController < ApplicationController
   def show
     @events_created = current_user.created_events
     @events_attended = current_user.attended_events
-    @past_events = @events_attended.where("date < ?", Time.now)
-    @upcoming_events = @events_attended.where("date > ?", Time.now)
+    @past_events = @events_attended.past
+    @upcoming_events = @events_attended.upcoming
   end
 
   private

@@ -4,13 +4,17 @@
 <span>Event name:</span>
 <span><%= @event.name %></span><br>
 <span>Date:</span>
-<span><%= @event.date %></span><br>
+<span>
+  <%= @event.date %> <%= time_ago_in_words(@event.date) %>
+  <%= @event.date > Time.now ? "from now" : "ago" %>
+</span>
+<br>
 <span>Content:</span>
 <span><%= @event.content %></span><br>
 <span>Location:</span>
 <span><%= @event.location %></span><br><br>
 
-<% unless session[:user_id] == @event.creator_id %>
+<% unless (session[:user_id] == @event.creator_id) || (@event.date < Time.now) %>
   <% if !@registered %>
     <%= form_for(:registrations, url: attend_path, method: :post) do |f| %>
         <%= f.hidden_field :event_id, value: @event.id %>
