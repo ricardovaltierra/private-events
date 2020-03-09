@@ -5,8 +5,15 @@
   </br>
 <% end %>
 
-<h1>Registered Events</h1>
-<% @events_attended.each do |event| %>
+<h1>Past Events</h1>
+<% @past_events.each do |event| %>
+  <%= link_to event.name, event_path(event.id) %>
+  <span><%= event.date %></span>
+  </br>
+<% end %>
+
+<h1>Upcoming Events</h1>
+<% @upcoming_events.each do |event| %>
   <%= link_to event.name, event_path(event.id) %>
   <span><%= event.date %></span>
   </br>
