@@ -1,5 +1,4 @@
 class RegistrationsController < ApplicationController
-  
   def create
     @event = Event.find_by(id: params[:registrations][:event_id])
     attend(@event)

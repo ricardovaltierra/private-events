@@ -1,11 +1,10 @@
 class EventsController < ApplicationController
-  
   def index
     @events = Event.all
     @past_events = Event.past
     @upcoming_events = Event.upcoming
   end
-  
+
   def new
     @event = Event.new
   end
@@ -22,7 +21,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @attendees = @event.attendees.order(username: :asc)
-    registered?(current_user) ? @attending = false : @attending = true
+    @attending = registered?(current_user) ? false : true
   end
 
   private
