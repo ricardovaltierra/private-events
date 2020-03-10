@@ -40,6 +40,11 @@ RSpec.describe Event, type: :model do
         subject.creator_id = nil
         expect(subject).to_not be_valid
     end
+
+    it "should not allow a name longer than 100 characters" do
+      subject.name = 'a' * 101
+      expect(subject).to_not be_valid
+    end
   end
 
   describe "Associations" do
