@@ -2,37 +2,44 @@ require 'rails_helper'
 
 RSpec.describe Event, type: :model do
 
-    user = User.find_by(username: "Example User")
-    subject { described_class.new(
+    let(:test_user) { User.create(username: "Example User") }
+    let(:subject) { described_class.new(
                         name: "Ruby Meetup",
                         content: "Lorem ipsum",
                         location: "Brazil",
                         date: DateTime.now,
-                        creator_id: user.id)
+                        creator_id: test_user.id)
     }
 
-  it "is valid with valid attributes" do
-    expect(subject).to be_valid
-  end
+  describe "validations" do
+    it "is valid with valid attributes" do
+        expect(subject).to be_valid
+    end
 
-  it "is not valid without a title" do
-    subject.name = nil
-    expect(subject).to_not be_valid
-  end
+    it "is not valid without a name" do
+        subject.name = nil
+        expect(subject).to_not be_valid
+    end
 
-  it "is not valid without a description" do
-    subject.content = nil
-    expect(subject).to_not be_valid
-  end
+    it "is not valid without a content" do
+        subject.content = nil
+        expect(subject).to_not be_valid
+    end
 
-  it "is not valid without a start_date" do
-    subject.location = nil
-    expect(subject).to_not be_valid
-  end
+    it "is not valid without a location" do
+        subject.location = nil
+        expect(subject).to_not be_valid
+    end
 
-  it "is not valid without a end_date" do
-    subject.date = nil
-    expect(subject).to_not be_valid
+    it "is not valid without a date" do
+        subject.date = nil
+        expect(subject).to_not be_valid
+    end
+
+    it "is not valid without a creator_id" do
+        subject.creator_id = nil
+        expect(subject).to_not be_valid
+    end
   end
 
   describe "Associations" do
