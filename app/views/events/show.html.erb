@@ -6,7 +6,7 @@
 <span>Date:</span>
 <span>
   <%= @event.date %> <%= time_ago_in_words(@event.date) %>
-  <%= past_or_future %>
+  (<%= past_or_future %>)
 </span>
 <br>
 <span>Content:</span>
