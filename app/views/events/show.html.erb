@@ -6,7 +6,7 @@
 <span>Date:</span>
 <span>
   <%= @event.date %> <%= time_ago_in_words(@event.date) %>
-  <%= @event.date > Time.now ? "from now" : "ago" %>
+  <%= past_or_future %>
 </span>
 <br>
 <span>Content:</span>
@@ -14,7 +14,7 @@
 <span>Location:</span>
 <span><%= @event.location %></span><br><br>
 
-<% unless verify_register %>
+<% unless valid_register %>
   <% if !@registered %>
     <%= form_for(:registrations, url: attend_path, method: :post) do |f| %>
         <%= f.hidden_field :event_id, value: @event.id %>

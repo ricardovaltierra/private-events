@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :require_login, only: [:new, :create, :index, :show]
+  before_action :require_login, only: %i[new create index show]
 
   def index
     @events = Event.all
@@ -34,5 +34,5 @@ class EventsController < ApplicationController
 
   def require_login
     redirect_to login_path unless session[:user_id]
-  end 
+  end
 end
