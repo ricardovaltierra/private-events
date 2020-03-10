@@ -14,7 +14,7 @@
 <span>Location:</span>
 <span><%= @event.location %></span><br><br>
 
-<% unless (session[:user_id] == @event.creator_id) || (@event.date < Time.now) %>
+<% unless verify_register %>
   <% if !@registered %>
     <%= form_for(:registrations, url: attend_path, method: :post) do |f| %>
         <%= f.hidden_field :event_id, value: @event.id %>
