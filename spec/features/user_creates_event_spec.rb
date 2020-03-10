@@ -1,17 +1,16 @@
 require 'rails_helper'
 
-RSpec.feature "UserCreatesEvents", type: :feature do
-  
-  scenario "logged in user" do
+RSpec.feature 'Events', type: :feature do
+  scenario 'logged in user' do
     log_in
-    expect(page).to have_content("Welcome TestUser")
+    expect(page).to have_content('Welcome TestUser')
     click_link('Create event')
     find_fields
   end
 
-  scenario "valid field" do
+  scenario 'valid field' do
     log_in
-    expect(page).to have_content("Welcome TestUser")
+    expect(page).to have_content('Welcome TestUser')
     click_link('Create event')
     find_fields
     fill_fields
@@ -19,9 +18,9 @@ RSpec.feature "UserCreatesEvents", type: :feature do
     expect(page).to have_content('Microverse')
   end
 
-  scenario "invalid fields" do
+  scenario 'invalid fields' do
     log_in
-    expect(page).to have_content("Welcome TestUser")
+    expect(page).to have_content('Welcome TestUser')
     click_link('Create event')
     find_fields
     click_button 'Create Event'
@@ -30,7 +29,7 @@ RSpec.feature "UserCreatesEvents", type: :feature do
   end
 
   def log_in
-    user = User.create(username: "TestUser")
+    user = User.create(username: 'TestUser')
     visit login_path
     fill_in 'Username', with: user.username
     click_button 'Log in'
