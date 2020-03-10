@@ -6,7 +6,7 @@
   <span>Creator:</span>
   <span><%= event.creator.username %></span><br>
   <span>Date:</span>
-  <span><%= @event.date %> (<%= time_ago_in_words(@event.date) %> ago)</span><br>
+  <span><%= event.date %> (<%= time_ago_in_words(event.date) %> ago)</span><br>
   <span>Content:</span>
   <span><%= event.content %></span><br>
   <span>Location:</span>
@@ -19,7 +19,7 @@
   <span>Creator:</span>
   <span><%= event.creator.username %></span><br>
   <span>Date:</span>
-  <span><%= @event.date %> (<%= time_ago_in_words(@event.date) %> from now)</span><br>
+  <span><%= event.date %> (<%= time_ago_in_words(event.date) %> from now)</span><br>
   <span>Content:</span>
   <span><%= event.content %></span><br>
   <span>Location:</span>
