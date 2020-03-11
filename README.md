@@ -1,11 +1,8 @@
 Private Event
 ==============
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 Microverse pathwright project wich consist on a site similar to a private Eventbrite which allows users to create events and then manage user signups.
 
-Things you may want to cover:
 ## What it does?
 Users can create events and see other members registered to his events. Events take place at a specific time and location. Give a brief description of your party for your attendees to see what's about. You will need to log in to create an event and attend (only for future events).
 
@@ -14,7 +11,6 @@ The Model is working on top of the following resources:
 
 - Ruby (version 2.6.5)
 - Rails (version 5.2.4)
-
 
 And the next dependencies:
 
