@@ -14,11 +14,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @events = current_user.created_events
+    @events_created = current_user.created_events
+    @events_attended = current_user.attended_events
+    @past_events = @events_attended.past
+    @upcoming_events = @events_attended.upcoming
   end
 
   private
-  
+
   def user_param
     params.require(:user).permit(:username)
   end

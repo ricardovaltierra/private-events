@@ -1,9 +1,12 @@
 class EventsController < ApplicationController
-  
+  before_action :require_login, only: %i[new create index show]
+
   def index
     @events = Event.all
+    @past_events = Event.past
+    @upcoming_events = Event.upcoming
   end
-  
+
   def new
     @event = Event.new
   end
@@ -19,11 +22,17 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @attendees = @event.attendees.order(username: :asc)
+    @attending = registered?(current_user) ? false : true
   end
 
   private
 
   def event_params
     params.require(:event).permit(:name, :location, :content, :date)
+  end
+
+  def require_login
+    redirect_to login_path unless session[:user_id]
   end
 end

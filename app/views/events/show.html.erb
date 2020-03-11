@@ -4,8 +4,32 @@
 <span>Event name:</span>
 <span><%= @event.name %></span><br>
 <span>Date:</span>
-<span><%= @event.date %></span><br>
+<span>
+  <%= @event.date %> <%= time_ago_in_words(@event.date) %>
+  (<%= past_or_future %>)
+</span>
+<br>
 <span>Content:</span>
 <span><%= @event.content %></span><br>
 <span>Location:</span>
-<span><%= @event.location %></span><br><br> 
+<span><%= @event.location %></span><br><br>
+
+<% unless valid_register %>
+  <% if !@registered %>
+    <%= form_for(:registrations, url: attend_path, method: :post) do |f| %>
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.submit 'Register' %>
+    <% end %>
+  <% else %>
+    <%= form_for(:registrations, url: unattend_path, method: :delete) do |f| %>
+      <%= f.hidden_field :event_id, value: @event.id %>
+      <%= f.submit 'Unattend' %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>Attendees</h1>
+<% @attendees.each do |attendee| %>
+  <span><%= attendee.username %></span>
+  </br>
+<% end %>
