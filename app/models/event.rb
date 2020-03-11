@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   validates :name, presence: true, length: { maximum: 100 }
   validates :date, :location, :content, presence: true
 
-  scope :past, -> { where('date < ?', Time.now) }
+  scope :past, -> { where('date < ?', Time.zone.now) }
 
-  scope :upcoming, -> { where('date > ?', Time.now) }
+  scope :upcoming, -> { where('date > ?', Time.zone.now) }
 end
