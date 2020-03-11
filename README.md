@@ -14,7 +14,6 @@ The Model is working on top of the following resources:
 
 And the next dependencies:
 
-* Database creation
 - sqlite3
 - puma
 - sass-rails
