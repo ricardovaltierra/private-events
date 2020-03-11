@@ -1,0 +1,19 @@
+<h1>Created Events</h1>
+<% @events_created.each do |event| %>
+  <%= link_to event.name, event_path(event.id) %>
+  </br>
+<% end %>
+
+<h1>Past Events</h1>
+<% @past_events.each do |event| %>
+  <%= link_to event.name, event_path(event.id) %>
+  <span><%= event.date %> (<%= time_ago_in_words(event.date)%> ago)</span>
+  </br>
+<% end %>
+
+<h1>Upcoming Events</h1>
+<% @upcoming_events.each do |event| %>
+  <%= link_to event.name, event_path(event.id) %>
+  <span><%= event.date %> (<%= time_ago_in_words(event.date)%> from now)</span>
+  </br>
+<% end %>

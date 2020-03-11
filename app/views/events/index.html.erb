@@ -1,0 +1,27 @@
+<h1>Events#show</h1>
+
+<h2>Past Events</h2>
+<% @past_events.each do |event| %>
+  <%= link_to event.name, event_path(event.id) %><br>
+  <span>Creator:</span>
+  <span><%= event.creator.username %></span><br>
+  <span>Date:</span>
+  <span><%= event.date %> (<%= time_ago_in_words(event.date) %> ago)</span><br>
+  <span>Content:</span>
+  <span><%= event.content %></span><br>
+  <span>Location:</span>
+  <span><%= event.location %></span><br><br>
+<% end %>
+
+<h2>Upcoming Events</h2>
+<% @upcoming_events.each do |event| %>
+  <%= link_to event.name, event_path(event.id) %><br>
+  <span>Creator:</span>
+  <span><%= event.creator.username %></span><br>
+  <span>Date:</span>
+  <span><%= event.date %> (<%= time_ago_in_words(event.date) %> from now)</span><br>
+  <span>Content:</span>
+  <span><%= event.content %></span><br>
+  <span>Location:</span>
+  <span><%= event.location %></span><br><br>
+<% end %>

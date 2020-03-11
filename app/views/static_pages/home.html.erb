@@ -1,0 +1,12 @@
+<div class="center jumbotron">
+    <h2>
+      Private event is a really cool app
+    </h2>
+
+    <% if session[:user_id] %>
+      <%= link_to 'All events', events_path %>
+      <%= link_to 'Create event', new_event_path %>
+    <% else %>
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% end %>
+  </div>
